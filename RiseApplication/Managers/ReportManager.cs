@@ -38,7 +38,7 @@ namespace Rise.Application.Managers
             {
                 FilePath = k.FilePath,
                 ReportStatus = k.ReportStatus,
-                ReportStatusDisplayName =k.ReportStatus.GetDisplayName(),
+                ReportStatusDisplayName = k.ReportStatus.GetDisplayName(),
                 RequestedDate = k.RequestedDate,
                 CompletedDate = k.CompletedDate,
                 Id = k.Id
@@ -63,14 +63,47 @@ namespace Rise.Application.Managers
         }
 
 
+        public async Task HandleReportIsCompleted(long reportId, string filePath)
+        {
+            var repoReport = _unitOfWork.Repository<Report>();
+            var report = await repoReport.GetFirstAsync(x => x.Id == reportId);
+            report.ReportStatus = Contracts.Types.Enums.ReportStatusTypEnum.Over;
+            report.CompletedDate = DateTime.Now;
+            report.FilePath = filePath;
+            repoReport.Update(report);
+            using (var trans = _unitOfWork.BeginTransaction())
+            {
+                try
+                {
+                    await _unitOfWork.SaveChangesAsync();
+                    trans.Commit();
+                }
+                catch (Exception)
+                {
+                    trans.Rollback();
+                    throw;
+                }
+            }
+        }
+
+        public async Task<List<ReportResultOutput>> GetReport()
+        {
+            var repoContactInformation = _unitOfWork.Repository<ContactInformation>();
+            var resultQueryable = repoContactInformation.GetAll();
+
+            //resultQueryable.Where(x => x.ContactType == Contracts.Types.Enums.ContactTypeEnum.Location).GroupBy(x => x.Value)
+        
+                return default;
+        }
+
         public async Task RequestReport()
         {
             var repo = _unitOfWork.Repository<Report>();
 
             var newItem = new Report()
             {
-               RequestedDate = DateTime.Now,
-               ReportStatus = Contracts.Types.Enums.ReportStatusTypEnum.Ongoing
+                RequestedDate = DateTime.Now,
+                ReportStatus = Contracts.Types.Enums.ReportStatusTypEnum.Ongoing
             };
             using (var transaction = _unitOfWork.BeginTransaction())
             {

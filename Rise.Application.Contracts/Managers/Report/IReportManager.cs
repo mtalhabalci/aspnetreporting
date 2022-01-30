@@ -13,5 +13,7 @@ namespace Rise.Application.Contracts.Managers.Report
     {
         Task RequestReport();
         Task<IPagedList<ReportOutput>> GetAll(ReportFilterDto request, CancellationToken cancellationToken);
+        Task HandleReportIsCompleted(long reportId, string filePath);
+        Task<List<ReportResultOutput>> GetReport();
     }
 }

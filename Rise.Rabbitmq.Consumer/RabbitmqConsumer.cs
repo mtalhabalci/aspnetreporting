@@ -37,6 +37,9 @@ namespace Rise.Rabbitmq.Consumer
         }
         public void Consume(RabbitmqConsumerConfigurationModel rabbitmqConsumerConfigurationModel)
         {
+            var excelPath = @"C:\riseexcels";
+            if (!File.Exists(excelPath))
+                Directory.CreateDirectory(excelPath);
             var excelHelper = new ExcelHelper();
             var lipsum = new LipsumGeneratorHelper();
             var factory = new ConnectionFactory() { HostName = rabbitmqConsumerConfigurationModel.Host, UserName = rabbitmqConsumerConfigurationModel.Username, Password = rabbitmqConsumerConfigurationModel.Password };
@@ -59,9 +62,10 @@ namespace Rise.Rabbitmq.Consumer
                     RabbitmqQueueModel stoc = JsonConvert.DeserializeObject<RabbitmqQueueModel>(data);
                     try
                     {
-                        var sampleList = GetSample();
-                        excelHelper.Export(sampleList, @$"C:\projects\poc\rabbitmqtelepati\excels\{lipsum.NextLoremIpsum(1)}.xlsx", "Report");
-                        //rapor burada indirilecek.
+                        var fileName = new Guid();
+                        var reportList = _reportManager.GetReport().Result;
+                        excelHelper.Export(reportList, @$"{excelPath}\{fileName}.xlsx", "Report");
+                        _reportManager.HandleReportIsCompleted(Convert.ToInt64(stoc.QueueObjectArguements.First().Value), @$"{excelPath}\{fileName}.xlsx");
                         Console.WriteLine(stoc.QueueObjectArguements.First().Value);
                         channel.BasicAck(ea.DeliveryTag, false);
                     }
