@@ -62,7 +62,7 @@ namespace Rise.Rabbitmq.Consumer
                     RabbitmqQueueModel stoc = JsonConvert.DeserializeObject<RabbitmqQueueModel>(data);
                     try
                     {
-                        var fileName = new Guid();
+                        var fileName = Guid.NewGuid();
                         var reportList = _reportManager.GetReport().Result;
                         excelHelper.Export(reportList, @$"{excelPath}\{fileName}.xlsx", "Report");
                         _reportManager.HandleReportIsCompleted(Convert.ToInt64(stoc.QueueObjectArguements.First().Value), @$"{excelPath}\{fileName}.xlsx");
