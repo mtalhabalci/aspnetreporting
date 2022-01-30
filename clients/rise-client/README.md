@@ -1,4 +1,4 @@
-# rise-client
+# rise
 
 ## Project setup
 ```

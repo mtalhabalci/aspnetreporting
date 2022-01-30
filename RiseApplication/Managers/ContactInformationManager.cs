@@ -31,9 +31,10 @@ namespace Rise.Application.Managers
 
             Expression<Func<ContactInformation, ContactInformationOutput>> select = k => new ContactInformationOutput()
             {
-               InformationType = k.ContactType,
-               Value = k.Value,
-               InformationTypeDisplayName = k.ContactType.GetDisplayName()
+                InformationType = k.ContactType,
+                Value = k.Value,
+                Id = k.Id,
+                InformationTypeDisplayName = k.ContactType.GetDisplayName()
             };
 
             #endregion Select
@@ -71,7 +72,7 @@ namespace Rise.Application.Managers
                     await _unitOfWork.SaveChangesAsync();
                     transaction.Commit();
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     transaction.Rollback();
                     throw;
@@ -87,8 +88,8 @@ namespace Rise.Application.Managers
 
             contactInformation.ContactType = input.ContactType;
             contactInformation.Value = input.Value;
-            contactInformation.PersonId= input.PersonId;
-            
+            contactInformation.PersonId = input.PersonId;
+
 
             using (var transaction = _unitOfWork.BeginTransaction())
             {
@@ -99,7 +100,63 @@ namespace Rise.Application.Managers
                     await _unitOfWork.SaveChangesAsync();
                     transaction.Commit();
                 }
-                catch (Exception e)
+                catch (Exception)
+                {
+                    transaction.Rollback();
+                    throw;
+                }
+            }
+        }
+
+        public async Task Delete(long id)
+        {
+            var repo = _unitOfWork.Repository<ContactInformation>();
+            using (var transaction = _unitOfWork.BeginTransaction())
+            {
+                try
+                {
+                    repo.Delete(id);
+                    await _unitOfWork.SaveChangesAsync();
+                    transaction.Commit();
+                }
+                catch (Exception)
+                {
+                    transaction.Rollback();
+                    throw;
+                }
+            }
+        }
+        private long GetRandomUserId(List<long> personIds)
+        {
+            Random r = new Random();
+            return Convert.ToInt64(personIds.OrderBy(x => r.Next()).Take(1).FirstOrDefault());
+        }
+        public async Task InsertDummyContactInformationData()
+        {
+            var repo = _unitOfWork.Repository<ContactInformation>();
+            var lipsum = new LipsumGeneratorHelper();
+            var repoPersons = _unitOfWork.Repository<Person>();
+            var persons = await repoPersons.GetAndMapAllAsync(selector: x => x.Id);
+            for (int i = 0; i < 100000; i++)
+            {
+
+                var contactInfo = new ContactInformation
+                {
+                    ContactType = Contracts.Types.Enums.ContactTypeEnum.Location,
+                    Value = lipsum.NextLoremIpsum(1),
+                    PersonId = GetRandomUserId(persons)
+                };
+
+                repo.Insert(contactInfo);
+            }
+            using (var transaction = _unitOfWork.BeginTransaction())
+            {
+                try
+                {
+                    await _unitOfWork.SaveChangesAsync();
+                    transaction.Commit();
+                }
+                catch (Exception)
                 {
                     transaction.Rollback();
                     throw;
@@ -107,6 +164,4 @@ namespace Rise.Application.Managers
             }
         }
     }
-
-
 }

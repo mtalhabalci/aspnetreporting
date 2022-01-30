@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RiseWebApi", "RiseWebApi\RiseWebApi.csproj", "{52495006-6496-44B9-A868-C54E08810C03}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RiseWebApi", "RiseWebApi\RiseWebApi.csproj", "{52495006-6496-44B9-A868-C54E08810C03}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "core", "core", "{5AD4A716-4CDC-4872-9C76-E47192ABBC2C}"
 EndProject
@@ -11,13 +11,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SDIKit.Common", "core\SDIKi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SDIKit.Data", "core\SDIKit.Data\SDIKit.Data.csproj", "{F3856C3A-4FD5-4D13-AD59-6CAD9689DD88}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rise.Application", "RiseApplication\Rise.Application.csproj", "{89DBC93B-99F5-4789-9236-409D3D68C612}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rise.Application", "RiseApplication\Rise.Application.csproj", "{89DBC93B-99F5-4789-9236-409D3D68C612}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rise.Application.Contracts", "Rise.Application.Contracts\Rise.Application.Contracts.csproj", "{27CF87C5-6D6F-40CE-A00E-E402216A620F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rise.Application.Contracts", "Rise.Application.Contracts\Rise.Application.Contracts.csproj", "{27CF87C5-6D6F-40CE-A00E-E402216A620F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rise.Domain", "Rise.Domain\Rise.Domain.csproj", "{26714574-CADA-4FBD-B338-562327D15935}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rise.Domain", "Rise.Domain\Rise.Domain.csproj", "{26714574-CADA-4FBD-B338-562327D15935}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rise.Migrator", "Rise.Migrator\Rise.Migrator.csproj", "{3793297A-82A2-4E4E-A7B6-ABD30593F429}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rise.Migrator", "Rise.Migrator\Rise.Migrator.csproj", "{3793297A-82A2-4E4E-A7B6-ABD30593F429}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rise.Rabbitmq", "Rise.Rabbitmq\Rise.Rabbitmq.csproj", "{E47EA435-E690-488A-A03A-EFA0B3231EF3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rise.Rabbitmq.Consumer", "Rise.Rabbitmq.Consumer\Rise.Rabbitmq.Consumer.csproj", "{9BA522D7-4408-4343-AD7F-DF36246075BC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +57,14 @@ Global
 		{3793297A-82A2-4E4E-A7B6-ABD30593F429}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3793297A-82A2-4E4E-A7B6-ABD30593F429}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3793297A-82A2-4E4E-A7B6-ABD30593F429}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E47EA435-E690-488A-A03A-EFA0B3231EF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E47EA435-E690-488A-A03A-EFA0B3231EF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E47EA435-E690-488A-A03A-EFA0B3231EF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E47EA435-E690-488A-A03A-EFA0B3231EF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BA522D7-4408-4343-AD7F-DF36246075BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BA522D7-4408-4343-AD7F-DF36246075BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BA522D7-4408-4343-AD7F-DF36246075BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BA522D7-4408-4343-AD7F-DF36246075BC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

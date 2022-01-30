@@ -14,5 +14,8 @@ namespace Rise.Application.Contracts.Managers
         Task<IPagedList<PersonOutput>> GetAll(PersonFilterDto request, CancellationToken cancellationToken);
         Task Update(CreateOrEditPersonInput input);
         Task Add(CreateOrEditPersonInput input);
+        Task Delete(long id);
+        Task<PersonOutput> GetById(long id);
+        Task InsertDummyContactInformationData();
     }
 }

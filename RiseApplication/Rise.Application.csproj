@@ -12,6 +12,7 @@
     <ProjectReference Include="..\core\SDIKit.Common\SDIKit.Common.csproj" />
     <ProjectReference Include="..\Rise.Application.Contracts\Rise.Application.Contracts.csproj" />
     <ProjectReference Include="..\Rise.Domain\Rise.Domain.csproj" />
+    <ProjectReference Include="..\Rise.Rabbitmq\Rise.Rabbitmq.csproj" />
   </ItemGroup>
 
 </Project>

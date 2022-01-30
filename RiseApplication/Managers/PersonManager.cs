@@ -1,6 +1,7 @@
 ﻿using Rise.Application.Contracts.Managers;
 using Rise.Application.Contracts.Managers.Person.Dtos;
 using Rise.Domain.Models;
+using SDIKit.Common.Helpers;
 using SDIKit.Common.Interfaces;
 using SDIKit.Data.Interfaces;
 using System;
@@ -28,7 +29,8 @@ namespace Rise.Application.Managers
             {
                 Name = k.Name,
                 Surname = k.Surname,
-                Company = k.Company
+                Company = k.Company,
+                Id = k.Id
             };
 
             #endregion Select
@@ -66,7 +68,7 @@ namespace Rise.Application.Managers
                     await _unitOfWork.SaveChangesAsync();
                     transaction.Commit();
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     transaction.Rollback();
                     throw;
@@ -93,7 +95,71 @@ namespace Rise.Application.Managers
                     await _unitOfWork.SaveChangesAsync();
                     transaction.Commit();
                 }
-                catch (Exception e)
+                catch (Exception)
+                {
+                    transaction.Rollback();
+                    throw;
+                }
+            }
+        }
+
+        public async Task Delete(long id)
+        {
+            var repo = _unitOfWork.Repository<Person>();
+            using (var transaction = _unitOfWork.BeginTransaction())
+            {
+                try
+                {
+                    repo.Delete(id);
+                    await _unitOfWork.SaveChangesAsync();
+                    transaction.Commit();
+                }
+                catch (Exception)
+                {
+                    transaction.Rollback();
+                    throw;
+                }
+            }
+        }
+
+        public async Task<PersonOutput> GetById(long id)
+        {
+            var repo = _unitOfWork.Repository<Person>();
+            var person = await repo.FindAsync(id);
+            var personOutput = new PersonOutput()
+            {
+                Id = person.Id,
+                Name = person.Name,
+                Surname = person.Surname,
+                Company = person.Company
+            };
+            return personOutput;
+        }
+
+        public async Task InsertDummyContactInformationData()
+        {
+            var repo = _unitOfWork.Repository<Person>();
+            var lipsum = new LipsumGeneratorHelper();
+            for (int i = 0; i < 100; i++)
+            {
+
+                var contactInfo = new Person
+                {
+                   Company = lipsum.NextLoremIpsum(1),
+                   Name = lipsum.NextLoremIpsum(1),
+                   Surname = lipsum.NextLoremIpsum(1)
+                };
+
+                repo.Insert(contactInfo);
+            }
+            using (var transaction = _unitOfWork.BeginTransaction())
+            {
+                try
+                {
+                    await _unitOfWork.SaveChangesAsync();
+                    transaction.Commit();
+                }
+                catch (Exception)
                 {
                     transaction.Rollback();
                     throw;

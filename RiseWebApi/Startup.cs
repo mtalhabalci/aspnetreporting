@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Rise.Application;
+using Rise.Rabbitmq;
 
 namespace RiseWebApi
 {
@@ -21,6 +22,7 @@ namespace RiseWebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddApplication(Configuration);
+            services.AddRabbitmq();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -37,7 +39,15 @@ namespace RiseWebApi
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "RiseWebApi v1"));
             }
-
+            app.UseCors(builder =>
+            {
+                builder
+                     .AllowAnyOrigin()
+                    .AllowAnyHeader()
+                    .WithExposedHeaders("Exception", "Token-Expired")
+                    .AllowAnyMethod();
+                builder.Build();
+            });
             app.UseRouting();
 
             app.UseAuthorization();

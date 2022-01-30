@@ -1,17 +1,53 @@
 <!DOCTYPE html>
-<html lang="">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title><%= htmlWebpackPlugin.options.title %></title>
-  </head>
-  <body>
-    <noscript>
-      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-    </noscript>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
-  </body>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+  <title><%= VUE_APP_TITLE %></title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,800;1,700&display=swap"
+    rel="stylesheet">
+
+  <link href="/fonts/fontawesome.css" rel="stylesheet" type="text/css">
+
+  <link href="/fonts/feather.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="antialiased" style="display: block;">
+
+  <div class="app-splash-screen"
+    style="background: #efefef; position: fixed; z-index: 99999999; top: 0; right: 0; bottom: 0; left: 0; opacity: 1; -webkit-transition: opacity .3s; transition: opacity .3s;">
+    <div class="app-splash-screen-content"
+      style="position: absolute; top: 47%; left: 50%; -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%);">
+      <div class="text-center">
+        <svg width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" stroke="#585858">
+          <g fill="none" fill-rule="evenodd" stroke-width="2">
+            <circle cx="22" cy="22" r="1">
+              <animate attributeName="r" begin="0s" dur="1.8s" values="1; 20" calcMode="spline" keyTimes="0; 1"
+                keySplines="0.165, 0.84, 0.44, 1" repeatCount="indefinite" />
+              <animate attributeName="stroke-opacity" begin="0s" dur="1.8s" values="1; 0" calcMode="spline"
+                keyTimes="0; 1" keySplines="0.3, 0.61, 0.355, 1" repeatCount="indefinite" />
+            </circle>
+            <circle cx="22" cy="22" r="1">
+              <animate attributeName="r" begin="-0.9s" dur="1.8s" values="1; 20" calcMode="spline" keyTimes="0; 1"
+                keySplines="0.165, 0.84, 0.44, 1" repeatCount="indefinite" />
+              <animate attributeName="stroke-opacity" begin="-0.9s" dur="1.8s" values="1; 0" calcMode="spline"
+                keyTimes="0; 1" keySplines="0.3, 0.61, 0.355, 1" repeatCount="indefinite" />
+            </circle>
+          </g>
+        </svg>
+      </div>
+      <div class="text-center mt-3">
+        <h6>Yükleniyor</h6>
+      </div>
+    </div>
+  </div>
+  <div id="app"></div>
+  <!-- built files will be auto injected -->
+</body>
+
 </html>

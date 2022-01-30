@@ -15,5 +15,7 @@ namespace Rise.Application.Contracts.Managers.ContactInformation
         Task<IPagedList<ContactInformationOutput>> GetAll(ContactInformationFilterDto request, CancellationToken cancellationToken);
         Task Add(CreateOrEditContactInformationInput input);
         Task Update(CreateOrEditContactInformationInput input);
+        Task Delete(long id);
+        Task InsertDummyContactInformationData();
     }
 }

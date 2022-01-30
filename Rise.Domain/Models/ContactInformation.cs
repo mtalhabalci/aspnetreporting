@@ -1,4 +1,4 @@
-﻿using Rise.Application.Contracts.Types;
+﻿using Rise.Application.Contracts.Types.Enums;
 
 namespace Rise.Domain.Models
 {

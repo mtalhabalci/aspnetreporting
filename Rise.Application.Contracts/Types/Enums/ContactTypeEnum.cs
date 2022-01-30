@@ -1,16 +1,16 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Rise.Application.Contracts.Types
+namespace Rise.Application.Contracts.Types.Enums
 {
     public enum ContactTypeEnum : int
     {
-        [Display(Name = "Phone")]
+        [Display(Name = "Telefon")]
         Phone = 1,
 
-        [Display(Name = "Email")]
+        [Display(Name = "Eposta")]
         Email = 2,
 
-        [Display(Name = "Location")]
+        [Display(Name = "Konum")]
         Location = 3
     }
 }

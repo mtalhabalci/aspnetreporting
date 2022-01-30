@@ -1,0 +1,88 @@
+.small-xs {
+  font-size: 75%;
+  font-weight: 400;
+}
+// Has-*
+//
+
+.has-dataGrid {
+  .card-body {
+    padding: 0;
+  }
+
+  .b-table th {
+    border-top: 0;
+  }
+
+  .b-table tr th:first-child,
+  .b-table tr td:first-child {
+    border-left: 0 !important;
+  }
+
+  .b-table tr th:last-child,
+  .b-table tr td:last-child {
+    border-right: 0 !important;
+  }
+}
+
+.table-vcenter {
+  td,
+  th {
+    vertical-align: middle;
+  }
+}
+
+.grid-actions {
+  text-align: center;
+  width: 65px;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.card .card-footer {
+  border-top: 1px solid rgba(24, 28, 33, 0.06) !important;
+}
+
+.no-padding {
+  .card-body {
+    padding: 0;
+  }
+}
+
+.sdiKit-popover .popover {
+  min-width: 250px;
+}
+
+.has-multiSelect {
+  .multiselect__single {
+    max-width: 185px !important;
+  }
+}
+
+.multiselect,
+.multiselect__input,
+.multiselect__placeholder,
+.multiselect__single {
+  font-size: 0.894rem !important;
+}
+
+.multiselect__placeholder {
+  margin-bottom: 0 !important;
+  padding-top: 0 !important;
+}
+
+.selection-none {
+  -webkit-user-select: none; /* Chrome all / Safari all */
+  -moz-user-select: none; /* Firefox all */
+  -ms-user-select: none; /* IE 10+ */
+  user-select: none; /* Likely future */
+}
+
+.pageconfig h4 :nth-child(3) {
+  display: inline-block;
+  max-width: 300px;
+  white-space: nowrap;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+  vertical-align: bottom;
+}

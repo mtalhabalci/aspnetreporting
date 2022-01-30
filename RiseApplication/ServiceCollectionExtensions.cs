@@ -2,6 +2,8 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Rise.Application.Contracts.Managers;
+using Rise.Application.Contracts.Managers.ContactInformation;
+using Rise.Application.Contracts.Managers.Report;
 using Rise.Application.Managers;
 using Rise.Domain;
 using SDIKit.Common;
@@ -16,6 +18,8 @@ namespace Rise.Application
         {
             var databaseSettings = configuration.GetSection(nameof(DatabaseSettings)).Get<DatabaseSettings>();
             services.AddScoped<IPersonManager, PersonManager>();
+            services.AddScoped<IContactInformationManager, ContactInformationManager>();
+            services.AddScoped<IReportManager, ReportManager>();
             services.AddApplicationDbContext(configuration);
         }
     }

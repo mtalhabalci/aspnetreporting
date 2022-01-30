@@ -20,8 +20,8 @@ namespace RiseWebApi.Controllers
             _contactInformationManager = contactInformationManager;
         }
 
-        [HttpPost]
-        public async Task<IActionResult> GetAllPersons([FromBody] ContactInformationFilterDto filter, CancellationToken cancellationToken)
+        [HttpPost("get-all")]
+        public async Task<IActionResult> GetAll([FromBody] ContactInformationFilterDto filter, CancellationToken cancellationToken)
         {
             var result = await _contactInformationManager.GetAll(filter, cancellationToken);
             return ApiResult(result);
@@ -37,5 +37,22 @@ namespace RiseWebApi.Controllers
 
             return ApiResult(new ApiResult(resultState: ResultState.Info));
         }
+
+        [HttpPost("delete")]
+        [ValidateModel]
+        public async Task<IActionResult> Delete([FromBody] long id)
+        {
+            await _contactInformationManager.Delete(id);
+            return ApiResult(state: ResultState.Info);
+        }
+
+        [HttpPost("insert-dummy-data")]
+        [ValidateModel]
+        public async Task<IActionResult> InsertDummyData()
+        {
+            await _contactInformationManager.InsertDummyContactInformationData();
+            return ApiResult();
+        }
+
     }
 }

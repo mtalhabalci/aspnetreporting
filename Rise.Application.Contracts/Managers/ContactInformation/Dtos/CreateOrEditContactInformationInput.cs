@@ -1,4 +1,5 @@
 ﻿using Rise.Application.Contracts.Types;
+using Rise.Application.Contracts.Types.Enums;
 using SDIKit.Common.Types;
 using System;
 using System.Collections.Generic;
