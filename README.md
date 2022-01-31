@@ -1,4 +1,4 @@
-# Rehberi Uygulaması
+# Rehber Uygulaması
 ### Açıklama
 
 Rehber uygulaması kişilerin isim, soyisim ve şirketlerinin ve iletişim bilgilerinin tutulup excel formatı halinde rapor çıktısı veren bir uygulamadır.
