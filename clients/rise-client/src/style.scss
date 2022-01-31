@@ -1,0 +1,9 @@
+@import "~node_modules/bootstrap/dist/css/bootstrap.css";
+@import "~node_modules/bootstrap-vue/dist/bootstrap-vue.css";
+@import "~@/assets/themes/tabler/theme";
+@import "~/styles/index";
+@import "~node_modules/vue-multiselect/dist/vue-multiselect.min.css";
+* {
+  outline: none;
+  // font-family: "Poppins", sans-serif;
+}

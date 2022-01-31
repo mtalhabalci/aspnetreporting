@@ -1,0 +1,60 @@
+@import "tabler";
+html {
+    // font-size: 14px;
+}
+
+a {
+    &:hover {
+        @extend .text-decoration-none;
+    }
+}
+.btn {
+    &.btn-sm {
+        &.btn-icon,
+        &.icon-btn {
+            padding: 0.25rem !important;
+        }
+    }
+    ~ .btn {
+        @extend .m-1;
+    }
+
+    &.btn-default {
+        color: #354052;
+        background-color: #ffffff;
+        border-color: rgba(110, 117, 130, 0.2);
+        background-image: -webkit-gradient(
+            linear,
+            left top,
+            left bottom,
+            from(rgba(53, 64, 82, 0)),
+            to(rgba(53, 64, 82, 0.04))
+        );
+        background-image: linear-gradient(-180deg, rgba(53, 64, 82, 0), rgba(53, 64, 82, 0.04) 100%);
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+    }
+}
+
+.icon-btn.btn-sm,
+.btn-group-sm > .icon-btn.btn {
+    min-width: calc(1.3214286rem + 2px);
+}
+
+.dropdown-toggle::after {
+    border-top: 0;
+    border-right: 0;
+}
+
+.invalid-tooltip::before {
+    top: -3px;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: transparent;
+}
+.card {
+    .card-header {
+        display: block !important;
+    }
+}

@@ -1,0 +1,47 @@
+.invalid-tooltip {
+  color: var(--danger);
+  top: auto;
+  background-color: transparent;
+  font-weight: bold;
+  position: relative;
+  padding-left: 20px;
+}
+
+.invalid-tooltip::before {
+  display: block;
+  position: absolute;
+  content: "*";
+  color: var(--danger);
+  font-size: 1.8rem;
+  left: 0px;
+  top: -5px;
+}
+.multiselect.is-invalid ~ .invalid-tooltip,
+.markdown-editor.is-invalid ~ .invalid-tooltip,
+.vdp-datepicker.is-invalid ~ .invalid-tooltip,
+.multiselect.multiselect-info-light.is-invalid ~ .invalid-tooltip,
+.form-control.is-invalid ~ .invalid-tooltip,
+.vue-tel-input.phoneClass.is-invalid ~ .invalid-tooltip,
+.invalid-phone,
+.genderValidationError {
+  display: block;
+}
+
+.default-style .markdown-editor.is-invalid {
+  border: 1px solid rgb(255, 0, 0);
+}
+.phoneClass.is-invalid {
+  border: 1px solid rgb(255, 0, 0) !important;
+}
+.input-required::after {
+  content: "(*)";
+  position: absolute;
+  right: 0;
+  top: 0;
+  color: red;
+  font-size: 80%;
+}
+fieldset.form-group {
+  position: relative;
+}
+//class="vue-tel-input phoneClass is-invalid"

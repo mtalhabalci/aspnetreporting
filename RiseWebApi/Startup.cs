@@ -1,15 +1,11 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Rise.Application;
+using Rise.Rabbitmq;
 
 namespace RiseWebApi
 {
@@ -25,7 +21,8 @@ namespace RiseWebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddApplication(Configuration);
+            services.AddRabbitmq();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -42,7 +39,15 @@ namespace RiseWebApi
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "RiseWebApi v1"));
             }
-
+            app.UseCors(builder =>
+            {
+                builder
+                     .AllowAnyOrigin()
+                    .AllowAnyHeader()
+                    .WithExposedHeaders("Exception", "Token-Expired")
+                    .AllowAnyMethod();
+                builder.Build();
+            });
             app.UseRouting();
 
             app.UseAuthorization();

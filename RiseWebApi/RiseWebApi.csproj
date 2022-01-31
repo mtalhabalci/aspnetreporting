@@ -10,4 +10,11 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\core\SDIKit.Data\SDIKit.Data.csproj" />
+    <ProjectReference Include="..\Rise.Application.Contracts\Rise.Application.Contracts.csproj" />
+    <ProjectReference Include="..\Rise.Rabbitmq\Rise.Rabbitmq.csproj" />
+    <ProjectReference Include="..\RiseApplication\Rise.Application.csproj" />
+  </ItemGroup>
+
 </Project>
