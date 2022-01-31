@@ -7,7 +7,7 @@ namespace Rise.Rabbitmq.Consumer
         static void Main(string[] args)
         {
             var rabbitmqConsumer = new RabbitmqConsumer();
-            rabbitmqConsumer.Consume(new RabbitmqConsumerConfigurationModel { ChannelName = "Report", Host = "localhost", Username = "test", Password = "test" });
+            rabbitmqConsumer.Consume(new RabbitmqConsumerConfigurationModel { ChannelName = "Report", Host = "localhost" });
         }
     }
 }
