@@ -52,7 +52,7 @@ Projeye `http://localhost:1071` portundan erişebilirsiniz.
 ### Rise Public API
     cd services\src\RiseWebApi
     dotnet run
-API swagger adresleri: `https://localhost:30011/swagger/index.html` ve `http://localhost:30021/swagger/index.html`.
+API swagger adresleri: `https://localhost:30010/swagger/index.html` ve `http://localhost:30020/swagger/index.html`.
 
 
 # Veri Tabanı

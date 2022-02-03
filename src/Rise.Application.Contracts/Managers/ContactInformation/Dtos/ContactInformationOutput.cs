@@ -13,11 +13,11 @@ namespace Rise.Application.Contracts.Managers.ContactInformation.Dtos
 {
     public class ContactInformationOutput : DtoBase
     {
-        [Display(Name = "Bilgi Tipi")]
-        public string InformationTypeDisplayName { get; set; }
-        [Hidden]
-        public ContactTypeEnum InformationType { get; set; }
-        [Display(Name="Değer")]
-        public string Value { get; set; }
+        [Display(Name="E-posta")]
+        public string Email { get; set; }
+        [Display(Name="Telefon")]
+        public string Phone { get; set; }
+        [Display(Name="Konum")]
+        public string Location { get; set; }
     }
 }

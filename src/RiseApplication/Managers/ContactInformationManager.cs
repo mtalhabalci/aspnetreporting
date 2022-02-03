@@ -31,10 +31,10 @@ namespace Rise.Application.Managers
 
             Expression<Func<ContactInformation, ContactInformationOutput>> select = k => new ContactInformationOutput()
             {
-                InformationType = k.ContactType,
-                Value = k.Value,
                 Id = k.Id,
-                InformationTypeDisplayName = k.ContactType.GetDisplayName()
+                Email = k.Email,
+                Phone = k.Phone,
+                Location = k.Location
             };
 
             #endregion Select
@@ -60,9 +60,10 @@ namespace Rise.Application.Managers
 
             var newItem = new ContactInformation()
             {
-                ContactType = input.ContactType,
+                Email = input.Email,
+                Location = input.Location,
+                Phone = input.Phone,
                 PersonId = input.PersonId,
-                Value = input.Value
             };
             using (var transaction = _unitOfWork.BeginTransaction())
             {
@@ -86,8 +87,9 @@ namespace Rise.Application.Managers
 
             var contactInformation = await repo.FindAsync(input.Id);
 
-            contactInformation.ContactType = input.ContactType;
-            contactInformation.Value = input.Value;
+            contactInformation.Phone = input.Phone;
+            contactInformation.Email = input.Email;
+            contactInformation.Location = input.Location;
             contactInformation.PersonId = input.PersonId;
 
 
@@ -142,8 +144,10 @@ namespace Rise.Application.Managers
 
                 var contactInfo = new ContactInformation
                 {
-                    ContactType = Contracts.Types.Enums.ContactTypeEnum.Location,
-                    Value = lipsum.NextLoremIpsum(1),
+
+                    Email = lipsum.NextLoremIpsum(1),
+                    Location = lipsum.NextLoremIpsum(1),
+                    Phone = lipsum.NextLoremIpsum(1),
                     PersonId = GetRandomUserId(persons)
                 };
 

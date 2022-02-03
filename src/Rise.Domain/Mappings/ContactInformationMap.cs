@@ -9,13 +9,12 @@ using System.Threading.Tasks;
 
 namespace Rise.Domain.Mappings
 {
-    
+
     public class ContactInformationMap : EntityBaseMap<ContactInformation>
     {
         public override void Configure(EntityTypeBuilder<ContactInformation> builder)
         {
             builder.ToTable("ContactInformations");
-            builder.Property(e => e.Value).IsRequired().HasConversion(k => k.Trim(), k => k);
 
             builder.HasOne(d => d.Person)
                .WithMany(p => p.ContactInformations)
@@ -26,8 +25,9 @@ namespace Rise.Domain.Mappings
             builder.HasData(new ContactInformation
             {
                 Id = 1,
-                ContactType = Application.Contracts.Types.Enums.ContactTypeEnum.Email,
-                Value = "test@test.com",
+                Email = "test@test.com",
+                Phone = "+905345860966",
+                Location = "Ankara",
                 PersonId = 1
             });
 

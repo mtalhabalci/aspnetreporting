@@ -10,5 +10,6 @@ namespace Rise.Application.Contracts.Managers.Report.Dtos
     {
         public string Location { get; set; }
         public long PersonCount { get; set; }
+        public int PhoneCount { get; set; }
     }
 }

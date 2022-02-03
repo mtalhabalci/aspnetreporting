@@ -12,7 +12,8 @@ namespace Rise.Application.Contracts.Managers.ContactInformation.Dtos
     public class CreateOrEditContactInformationInput : DtoBase
     {
         public long PersonId { get; set; }
-        public string Value { get; set; }
-        public ContactTypeEnum ContactType { get; set; }
+        public string Phone { get; set; }
+        public string Email { get; set; }
+        public string Location { get; set; }
     }
 }

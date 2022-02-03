@@ -91,12 +91,23 @@ namespace Rise.Application.Managers
             var repoContactInformation = _unitOfWork.Repository<ContactInformation>();
             var resultQueryable = repoContactInformation.GetAll();
 
-            var result = resultQueryable
-                     .Where(x => x.ContactType == Contracts.Types.Enums.ContactTypeEnum.Location)
-                     .GroupBy(x => x.Value)
-                     .Select(x => new ReportResultOutput { Location = x.Key, PersonCount = x.Count() }).ToList();
+            var resultPersonCount = resultQueryable
+                     .GroupBy(x => x.Location)
+                     .Select(x => new { Location = x.Key, PersonCount = x.Count() }).ToList();
 
-            return result;
+
+            var resultForPhone = resultQueryable
+                .Where(x => x.Phone != null)
+                     .GroupBy(x => x.Location)
+                     .Select(x => new { Location = x.Key, PhoneCount  = x.Count() }).ToList();
+
+
+            var result = from person in resultPersonCount
+                         join phone in resultForPhone
+            on person.Location equals phone.Location // join on some property
+            select new ReportResultOutput { Location= person.Location, PhoneCount = phone.PhoneCount, PersonCount = person.PersonCount };
+            
+            return result.ToList();
         }
 
         public async Task RequestReport()

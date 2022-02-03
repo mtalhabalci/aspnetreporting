@@ -14,7 +14,11 @@ namespace Rise.Domain.Mappings
         public override void Configure(EntityTypeBuilder<Report> builder)
         {
             builder.ToTable("Reports");
-
+            builder.HasData(new Report
+            {
+                Id = 1
+                
+            });
             base.Configure(builder);
         }
     }
