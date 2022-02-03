@@ -39,7 +39,8 @@ Kuyruğu dinleyen bir yapı ilgili event tetiklendiğinde rapor üretim veri tab
 Projeyi yukarıdaki kodu çalıştırarak makinenize çekebilirsiniz.
 
 # Projeyi Ayaklandırma
-## Web Siteleri
+    Projeleri ayaklandırmak için bilgisayarınıza .Net 5 SDK ve Node Js yüklemeniz gerekmektedir. Ayrıca ASPNETCORE_ENVIRONMENT ortam değişkenini Development olarak atamanız gerekmektedir.
+## Web Siteleri 
 
 ### Rise Public Uygulaması
 
