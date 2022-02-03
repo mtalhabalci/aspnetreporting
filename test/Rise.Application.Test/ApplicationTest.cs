@@ -72,12 +72,12 @@ namespace Rise.Application.Test
         [DataTestMethod]
         public async Task CanDeletePerson_returns_true()
         {
-            var person = await PersonManager.GetById(1);
+            var person = await UnitOfWork.Repository<Person>().GetFirstAsync(x => x.Id != 1);
             try
             {
                 await PersonManager.Delete(person.Id);
-                person = await PersonManager.GetById(1);
-                Assert.IsTrue(person == null);
+               var deletedPerson = await PersonManager.GetById(person.Id);
+                Assert.IsTrue(deletedPerson == null);
             }
             catch (Exception)
             {
