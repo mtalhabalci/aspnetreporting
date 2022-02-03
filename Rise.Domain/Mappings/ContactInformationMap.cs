@@ -23,6 +23,14 @@ namespace Rise.Domain.Mappings
                .OnDelete(DeleteBehavior.Restrict)
                .HasConstraintName("FK_ContactInformation_PersonId_Person_Id"); //contactinfo'nun personId'si --> person'ın id'si 
 
+            builder.HasData(new ContactInformation
+            {
+                Id = 1,
+                ContactType = Application.Contracts.Types.Enums.ContactTypeEnum.Email,
+                Value = "test@test.com",
+                PersonId = 1
+            });
+
             base.Configure(builder);
         }
     }

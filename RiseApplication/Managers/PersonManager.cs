@@ -126,6 +126,8 @@ namespace Rise.Application.Managers
         {
             var repo = _unitOfWork.Repository<Person>();
             var person = await repo.FindAsync(id);
+            if (person == null)
+                return null;
             var personOutput = new PersonOutput()
             {
                 Id = person.Id,

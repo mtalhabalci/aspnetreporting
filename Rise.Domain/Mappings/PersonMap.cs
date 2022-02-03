@@ -9,10 +9,18 @@ namespace Rise.Domain.Mappings
         public override void Configure(EntityTypeBuilder<Person> builder)
         {
             builder.ToTable("Persons");
-            builder.Property(e => e.Name).HasMaxLength(50).HasConversion(k => k.Trim(), k => k);
-            builder.Property(e => e.Company).HasMaxLength(50).HasConversion(k => k.Trim(), k => k);
-            builder.Property(e => e.Surname).HasMaxLength(50).HasConversion(k => k.Trim(), k => k);
+            builder.Property(x => x.Id).UseIdentityColumn();
+            builder.Property(e => e.Name).HasConversion(k => k.Trim(), k => k);
+            builder.Property(e => e.Company).HasConversion(k => k.Trim(), k => k);
+            builder.Property(e => e.Surname).HasConversion(k => k.Trim(), k => k);
 
+            builder.HasData(new Person
+            {
+                Id = 1,
+                Name = "test",
+                Company = "test company",
+                Surname = "test surname"
+            });
 
 
             base.Configure(builder);
