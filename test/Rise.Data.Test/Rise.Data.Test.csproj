@@ -14,7 +14,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Rise.Domain\Rise.Domain.csproj" />
+    <ProjectReference Include="..\..\core\SDIKit.Common\SDIKit.Common.csproj" />
+    <ProjectReference Include="..\..\core\SDIKit.Data\SDIKit.Data.csproj" />
+    <ProjectReference Include="..\..\src\Rise.Domain\Rise.Domain.csproj" />
   </ItemGroup>
 
 </Project>

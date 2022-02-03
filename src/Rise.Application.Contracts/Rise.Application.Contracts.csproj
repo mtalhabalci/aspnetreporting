@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\core\SDIKit.Common\SDIKit.Common.csproj" />
+    <ProjectReference Include="..\..\core\SDIKit.Common\SDIKit.Common.csproj" />
   </ItemGroup>
 
 </Project>

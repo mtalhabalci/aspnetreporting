@@ -16,8 +16,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\core\SDIKit.Data\SDIKit.Data.csproj" />
-    <ProjectReference Include="..\..\Rise.Domain\Rise.Domain.csproj" />
-    <ProjectReference Include="..\..\RiseApplication\Rise.Application.csproj" />
+    <ProjectReference Include="..\..\src\Rise.Application.Contracts\Rise.Application.Contracts.csproj" />
+    <ProjectReference Include="..\..\src\Rise.Domain\Rise.Domain.csproj" />
+    <ProjectReference Include="..\..\src\Rise.Rabbitmq\Rise.Rabbitmq.csproj" />
+    <ProjectReference Include="..\..\src\RiseApplication\Rise.Application.csproj" />
   </ItemGroup>
 
 </Project>
