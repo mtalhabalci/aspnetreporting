@@ -25,6 +25,7 @@
       :ok-title="'Ekle'"
       ok-variant="success"
       :cancel-title="'İptal'"
+      size="xl"
       cancel-variant="danger"
       centered
       header-bg-variant="primary"
@@ -36,33 +37,23 @@
         </div>
       </div>
       <div class="row">
-        <sdiKit-enum-combobox
-          ref="comboboxContactType"
-          :label="'İletişim Bilgisi Türü Seçiniz'"
-          :class="contactInformation.contactType > 0 ? 'col-6' : 'col-12'"
-          v-model="contactInformation.contactType"
-          enum="Rise.Application.Contracts.Types.Enums.ContactTypeEnum"
-        ></sdiKit-enum-combobox>
         <sdiKit-textbox
-          v-if="contactInformation.contactType == contactTypeEnum.Location"
-          :label="'Değeri'"
+          :label="'Konum'"
           placeholder
-          v-model="contactInformation.value"
-          class="col-6"
+          v-model="contactInformation.location"
+          class="col-4"
         ></sdiKit-textbox>
         <sdiKit-textbox-email
-          :label="'Değeri'"
-          v-if="contactInformation.contactType == contactTypeEnum.Email"
+          :label="'E-posta'"
           placeholder
-          v-model="contactInformation.value"
-          class="col-6"
+          v-model="contactInformation.email"
+          class="col-4"
         ></sdiKit-textbox-email>
         <sdiKit-phone
-          :label="'Değeri'"
+          :label="'Telefon'"
           placeholder
-          v-if="contactInformation.contactType == contactTypeEnum.Phone"
-          v-model="contactInformation.value"
-          class="col-6"
+          v-model="contactInformation.phone"
+          class="col-4"
         ></sdiKit-phone>
       </div>
     </b-modal>
@@ -89,7 +80,7 @@ export default {
       type: Object,
       required: true,
     },
-   
+
     openContactInformationModal: {
       type: Function,
       default: () => {},
@@ -108,7 +99,9 @@ export default {
   },
   methods: {
     listContactInformations() {
-      this.$router.push({ path: "/person/contactinformation/" + this.value.id });
+      this.$router.push({
+        path: "/person/contactinformation/" + this.value.id,
+      });
     },
     checkValidation() {
       return true; //validasyonlar yapılacak
@@ -127,8 +120,7 @@ export default {
     },
     openModal() {
       this.$refs["contact-information-modal"].show();
-    }
-   
+    },
   },
 };
 </script>

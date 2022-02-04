@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -24,18 +24,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="ClosedXML" Version="0.95.4" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
-	  <PackageReference Include="RabbitMQ.Client" Version="6.2.2" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\core\SDIKit.Common\SDIKit.Common.csproj" />
-    <ProjectReference Include="..\core\SDIKit.Data\SDIKit.Data.csproj" />
-    <ProjectReference Include="..\src\Rise.Application.Contracts\Rise.Application.Contracts.csproj" />
-    <ProjectReference Include="..\src\Rise.Domain\Rise.Domain.csproj" />
-    <ProjectReference Include="..\src\Rise.Rabbitmq\Rise.Rabbitmq.csproj" />
-    <ProjectReference Include="..\src\RiseApplication\Rise.Application.csproj" />
+    <ProjectReference Include="..\..\core\SDIKit.Common\SDIKit.Common.csproj" />
+    <ProjectReference Include="..\..\core\SDIKit.Data\SDIKit.Data.csproj" />
+    <ProjectReference Include="..\Rise.Domain\Rise.Domain.csproj" />
   </ItemGroup>
 
 </Project>
